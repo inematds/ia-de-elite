@@ -59,6 +59,8 @@ if ! python3 -c "import faster_whisper" 2>/dev/null; then
   : > "$TMP/x.mp3"
   python3 "$KIT/scripts/reuniao.py" "$TMP/x.mp3" --saida "$TMP/a" >/dev/null 2>"$TMP/err"; rc=$?
   [ "$rc" -eq 3 ] && grep -q 'pip install faster-whisper' "$TMP/err" && ok "sem faster-whisper: orienta (rc 3)" || nok "sem faster-whisper (rc $rc)"
+else
+  ok "faster-whisper instalado (teste de orientação não se aplica)"
 fi
 
 # 7. instalar.sh em pasta temporária (nunca na ~/.claude real)
