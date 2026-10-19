@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elite AI — 7 habits of people who use AI at the top</title>
+<meta name="description" content="The 7 habits of people who use AI at the top, with practical examples and a ready-made kit: prompts, skills for Claude Code and local scripts. Open and free.">
+<link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/ia-de-elite/guia/">
+<link rel="alternate" hreflang="en" href="https://inematds.github.io/ia-de-elite/guia/en/">
+<link rel="alternate" hreflang="es" href="https://inematds.github.io/ia-de-elite/guia/es/">
+<meta property="og:title" content="Elite AI — 7 habits of people who use AI at the top">
+<meta property="og:description" content="Practical examples + a ready-made kit. Open and free.">
+<meta property="og:image" content="https://inematds.github.io/ia-de-elite/capa/capa.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#FACC15; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    --slow:#6b7280;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#a16207; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    --slow:#9ca3af;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  body.light nav{background:rgba(246,247,249,.85)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb)}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .lang{display:inline-flex;gap:2px;font-family:Sora;font-size:.78rem}
+  .lang a{color:var(--mut);padding:.2em .45em;border-radius:6px} .lang a.on{color:var(--amb);background:rgba(250,204,21,.12)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:#FACC15;color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  @media(max-width:860px){nav .links a.sec{display:none}}
+  @media(max-width:520px){nav .wrap{gap:8px;padding:8px 14px;height:auto;flex-wrap:wrap} nav .links{gap:8px;margin-left:0;width:100%;justify-content:space-between} nav .btn{padding:.45em .7em;font-size:.82rem} .tgl{width:34px;height:34px}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(250,204,21,.18),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.18rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:36ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;display:block}
+  .gratis{display:inline-flex;align-items:center;gap:8px;margin-top:1.4em;font-family:Sora;font-weight:600;font-size:.95rem;border:1px solid var(--line);border-radius:999px;padding:.35em .9em;background:var(--bg2)}
+  .gratis b{color:var(--amb)}
+  .resumo{padding:38px 0 34px;border-bottom:1px solid var(--line)}
+  .resumo p{font-size:1.12rem;line-height:1.7;max-width:74ch;margin:.55em 0 0}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:62ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.95rem;margin:0}
+  .num{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:8px;background:rgba(250,204,21,.14);color:var(--amb);font-family:Sora;font-weight:800;font-size:.9rem;margin-bottom:.7em}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.85rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0;white-space:pre}
+  pre .c{color:#8a8a98} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin-bottom:26px}
+  .step>div,.card{min-width:0}
+  p code,li code,td code{overflow-wrap:anywhere}
+  .step .b{width:46px;height:46px;border-radius:12px;background:#FACC15;color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .7em}
+  .ex{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.ex{grid-template-columns:1fr}}
+  .ex figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+  .ex figure img{width:100%;display:block}
+  .ex figure pre{margin:0;border:none;border-radius:0;font-size:.78rem}
+  .ex figcaption{padding:12px 14px;font-size:.9rem;color:var(--mut);background:var(--card)}
+  .phase{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .phase:last-child{border:none}
+  .phase .tag{flex:0 0 92px;font-family:Sora;font-weight:800;color:var(--amb)}
+  .phase .d strong{display:block;margin-bottom:.2em}
+  .phase .d span{color:var(--mut);font-size:.95rem}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:4px}
+  /* hábitos */
+  .hab{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;padding:26px 0;border-bottom:1px solid var(--line)}
+  .hab:last-child{border:none}
+  .hab .n{font-family:Sora;font-weight:800;font-size:2.4rem;line-height:1;color:var(--amb)}
+  .hab h3{font-size:1.3rem;margin-bottom:.35em}
+  .hab p{margin:.3em 0;max-width:72ch}
+  .hab .ex1{color:var(--mut);font-size:.95rem}
+  .hab .kitref{font-size:.88rem;color:var(--mut);margin-top:.6em}
+  .hab .kitref code{color:var(--txt)}
+  @media(max-width:540px){.hab{grid-template-columns:1fr;gap:6px}}
+  .bars{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0 6px;max-width:720px}
+  .bars .row{margin:10px 0}
+  .bars .lbl{display:flex;justify-content:space-between;gap:12px;font-size:.95rem;margin-bottom:6px}
+  .bars .lbl b{font-family:Sora}
+  .bars .t{height:26px;background:var(--bg2);border-radius:8px;overflow:hidden}
+  .bars .f{height:100%;border-radius:8px}
+  .bars .note{font-size:.85rem;color:var(--mut);margin-top:8px}
+  .big{display:flex;gap:14px;flex-wrap:wrap;margin:12px 0 4px}
+  .big div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;min-width:150px}
+  .big b{display:block;font-family:Sora;font-size:2rem;line-height:1.1;color:var(--amb)}
+  .big span{font-size:.88rem;color:var(--mut)}
+  .tree{font-size:.84rem}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top"><span class="emoji">🧠</span> Elite AI</a>
+  <span class="sep">|</span>
+  <span class="clubpro">
+    <a class="inema" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+    <span class="sep">-</span>
+    <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
+  </span>
+  <div class="links">
+    <a class="sec" href="#habitos">The 7 habits</a>
+    <a class="sec" href="#kit">The kit</a>
+    <a class="sec" href="#guia">User guide</a>
+    <a class="sec" href="#exemplos">Examples</a>
+    <span class="lang"><a href="../">PT</a><a class="on" href="./">EN</a><a href="../es/">ES</a></span>
+    <button class="tgl" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+    <a class="btn" href="https://github.com/inematds/ia-de-elite" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div>
+      <span class="chip">Elite AI · 7 habits + kit</span>
+      <h1>Use AI like someone at the <span class="amb">top</span></h1>
+      <p class="lead">When we think of who gets the most out of technology, someone like Elon Musk comes to mind. You don't have to be one of them: these are 7 simple habits, with practical examples and a kit ready to use today.</p>
+      <div class="cta">
+        <a class="btn" href="#habitos">See the 7 habits</a>
+        <a class="btn ghost" href="#kit">Download the kit</a>
+      </div>
+      <div class="gratis">✓ <span>Content and kit <b>open and free</b></span></div>
+    </div>
+    <figure><img src="../assets/hero.jpg" alt="Industrial humanoid robot with a black visor, a studio microphone and a holographic panel with a chart" width="1200" height="900"></figure>
+  </div>
+</header>
+
+<section id="resumo" class="resumo"><div class="wrap">
+  <span class="chip">In short</span>
+  <p>Elite AI is a guide to the 7 habits that separate people who really use AI from those who just ask loose questions in a chat: speak instead of typing, let the AI listen to the meeting, ask for visuals instead of text, be interviewed by the AI, ask for flaws, test with your own hands, and keep an open mind. It is for anyone who already uses ChatGPT, Claude or Gemini. It comes with an open and free kit with 7 prompts to copy, 4 skills for Claude Code and scripts that run on your computer. For the prompts, a chat is all you need; for the scripts, Python.</p>
+</div></section>
+
+<section id="oque"><div class="wrap">
+  <span class="chip">What it is</span>
+  <h2>Less typing, better results</h2>
+  <p class="sub">The difference isn't in the tool (most people use the same ones), it's in how you use it. The 7 habits change how much context you give, the format of the answer, and how honest it is.</p>
+  <div class="grid g3">
+    <div class="card"><h3>🎙️ More context, faster</h3><p>Speaking, you pass about 4 times more information per minute. The meeting turns into minutes and tasks on its own.</p></div>
+    <div class="card"><h3>📊 Answers you can understand</h3><p>Dashboards, charts, and 3D instead of paragraphs. The AI interviews you first and shows you the flaws, not just compliments.</p></div>
+    <div class="card"><h3>🧰 Ready-made, local kit</h3><p>Open prompts, skills, and scripts (MIT license). Transcription on your own computer, with no audio uploaded and no paid API.</p></div>
+  </div>
+</div></section>
+
+<section id="habitos"><div class="wrap">
+  <span class="chip">The 7 habits</span>
+  <h2>What changes, in practice</h2>
+  <p class="sub">Each habit comes with an example to try today and the matching file in the kit.</p>
+
+  <div class="hab"><div class="n">1</div><div>
+    <h3>Speak, don't type</h3>
+    <p>On average, we type 30 to 50 words per minute; speaking, 150 to 200. More words in the same time means more context, and context is what makes the answer good. Speak without worrying about order: the AI organizes it.</p>
+    <div class="bars" role="img" aria-label="Chart: typing about 40 words per minute, speaking about 170 words per minute">
+      <div class="row"><div class="lbl"><span>Typing</span><b>~40 words/min</b></div><div class="t"><div class="f" style="width:23.5%;background:var(--slow)"></div></div></div>
+      <div class="row"><div class="lbl"><span>Speaking</span><b class="amb">~170 words/min</b></div><div class="t"><div class="f" style="width:100%;background:#FACC15"></div></div></div>
+      <div class="note">Widely cited averages (typing 30–50, speaking 150–200); they vary from person to person.</div>
+    </div>
+    <p class="ex1"><b>Free everywhere:</b> Windows <code>Win + H</code> · macOS dictation (<code>Fn</code> twice) · Google Docs › Voice typing · your phone keyboard's microphone · Linux with local Whisper (<code>kit/scripts/ditado.sh</code>). Train the vocabulary: names and acronyms you use.</p>
+    <p class="kitref">In the kit: <code>prompts/01-fale-nao-digite.md</code> · <code>scripts/ditado.md</code> · <code>scripts/ditado.sh</code></p>
+  </div></div>
+
+  <div class="hab"><div class="n">2</div><div>
+    <h3>The AI listening to the meeting</h3>
+    <p>An executive assistant that transcribes the meeting and turns it into minutes and tasks: who does what, by when. The cost is close to zero compared with hiring someone for it. Record only with notice and everyone's consent.</p>
+    <p class="ex1"><b>Example:</b> "Paulo: I'll review module three by Friday" becomes the line <code>| Paulo | revisar o módulo três | sexta |</code> in <code>tarefas.md</code>.</p>
+    <p class="kitref">In the kit: <code>scripts/reuniao.py</code> (transcribes locally with faster-whisper) · <code>prompts/02-ia-na-reuniao.md</code></p>
+  </div></div>
+
+  <div class="hab"><div class="n">3</div><div>
+    <h3>Show, don't tell</h3>
+    <p>Ask for visualizations instead of text: an HTML page with charts, animation or 3D (three.js). Any good chat can do this, and the page shows up ready to open.</p>
+    <p class="ex1"><b>Examples:</b> your home's floor plan in 3D that you rotate with the mouse · a 20-page report turned into a dashboard with big numbers and bars · a hard concept turned into an animated explainer in 5 steps.</p>
+    <p class="kitref">In the kit: <code>prompts/03-mostre-nao-conte.md</code> · skill <code>mostra-nao-conta</code> · example <code>exemplos/painel-falar-vs-digitar.html</code></p>
+  </div></div>
+
+  <div class="hab"><div class="n">4</div><div>
+    <h3>The AI interviews you</h3>
+    <p>Before you ask, say: "ask me every question you need to do this the best way". One at a time. It pulls out of you the context you didn't even remember to give.</p>
+    <p class="ex1"><b>Example:</b> instead of "make a marketing plan", the AI asks who it's for, what the budget is, what has already been tried, what the deadline is — and only then writes.</p>
+    <p class="kitref">In the kit: <code>prompts/04-a-ia-te-entrevista.md</code> · skill <code>entrevista-me</code></p>
+  </div></div>
+
+  <div class="hab"><div class="n">5</div><div>
+    <h3>Ask for flaws, not opinions</h3>
+    <p>Chat models are trained with human feedback (RLHF), and we like hearing that we're right. That's why the AI tends to agree. "What do you think?" yields praise; "what's wrong? poke holes in my idea" yields useful work.</p>
+    <p class="ex1"><b>Example:</b> paste your plan and ask for the 5 most serious flaws, from worst to least, the most fragile assumption, and a cheap test for it.</p>
+    <p class="kitref">In the kit: <code>prompts/05-peca-falhas.md</code> · skill <code>fure-minha-ideia</code></p>
+  </div></div>
+
+  <div class="hab"><div class="n">6</div><div>
+    <h3>Test it yourself</h3>
+    <p>Instead of asking "can the AI do X?", ask it to do X right now. Capabilities change every week; yesterday's answer goes stale. Those who are ahead test with their own hands.</p>
+    <p class="ex1"><b>Example:</b> "Don't tell me whether you can. Make the smallest possible version of this, show the result and propose the next test."</p>
+    <p class="kitref">In the kit: <code>prompts/06-teste-voce-mesmo.md</code> · skill <code>testa-agora</code> (logs each test with its date in <code>testes-ia.md</code>)</p>
+  </div></div>
+
+  <div class="hab"><div class="n">7</div><div>
+    <h3>Open mind</h3>
+    <p>Avatars, glasses and earbuds with AI, agents that operate the computer: a lot of it feels strange the first time. Testing is cheap; not testing is expensive.</p>
+    <div class="big">
+      <div><b>30 min</b><span>one test per week</span></div>
+      <div><b>$0</b><span>most have a free plan</span></div>
+      <div><b>4</b><span>tests per month to decide</span></div>
+    </div>
+    <p class="kitref">In the kit: <code>prompts/07-mente-aberta.md</code> (5 new tests of up to 30 minutes for your field)</p>
+  </div></div>
+</div></section>
+
+<section id="kit"><div class="wrap">
+  <span class="chip">The kit · open and free</span>
+  <h2>What comes in the kit</h2>
+  <p class="sub">Everything in Portuguese, MIT license. Nothing installs itself: you choose what to use.</p>
+  <div class="grid g3">
+    <div class="card"><h3>📝 7 prompts</h3><p>One per habit, in <code>kit/prompts/</code>. Copy and paste into ChatGPT, Claude or Gemini.</p></div>
+    <div class="card"><h3>🧩 4 skills</h3><p><code>entrevista-me</code>, <code>fure-minha-ideia</code>, <code>mostra-nao-conta</code> and <code>testa-agora</code> for Claude Code.</p></div>
+    <div class="card"><h3>⚙️ Local scripts</h3><p><code>reuniao.py</code> (meeting → minutes + tasks) and <code>ditado.sh</code> (dictation on Linux), with Whisper on your own computer.</p></div>
+  </div>
+  <pre class="tree" style="margin-top:22px"><span class="k">kit/</span>
+├── prompts/        <span class="c"># 01-fale-nao-digite.md … 07-mente-aberta.md</span>
+├── skills/         <span class="c"># entrevista-me · fure-minha-ideia · mostra-nao-conta · testa-agora</span>
+├── scripts/        <span class="c"># reuniao.py · ditado.sh · ditado.md</span>
+├── exemplos/       <span class="c"># reuniao-exemplo.txt · painel-falar-vs-digitar.html</span>
+├── testes/rodar.sh <span class="c"># validates the kit with no network and no API</span>
+└── instalar.sh     <span class="c"># copies the skills to ~/.claude/skills/</span></pre>
+  <div class="flow" style="margin-top:18px">
+    <span>Meeting audio</span><span class="arr">→</span>
+    <span>faster-whisper (local)</span><span class="arr">→</span>
+    <span>transcricao.txt</span><span class="arr">→</span>
+    <span>claude -p · Ollama · or paste into the chat</span><span class="arr">→</span>
+    <span>ata.md + tarefas.md</span>
+  </div>
+</div></section>
+
+<section id="pre"><div class="wrap">
+  <span class="chip">Prerequisites</span>
+  <h2>What you need</h2>
+  <p class="sub">For the prompts, all you need is a chat. The rest is optional.</p>
+  <div class="grid g3">
+    <div class="card"><h3>An AI chat</h3><p>ChatGPT, Claude or Gemini, even on the free plan. That's enough for the 7 prompts.</p></div>
+    <div class="card"><h3>Python 3 + faster-whisper</h3><p>To transcribe meetings and dictation on your computer, without sending the audio to anyone.</p><pre><span class="k">pip install</span> faster-whisper</pre></div>
+    <div class="card"><h3>Claude Code or Ollama (optional)</h3><p>So <code>reuniao.py</code> can write the minutes by itself. Without them, the script generates a prompt for you to paste into the chat.</p></div>
+  </div>
+</div></section>
+
+<section id="guide"><div class="wrap">
+  <span class="chip">User guide · step by step</span>
+  <h2>From download to first result</h2>
+  <p class="sub">Real commands, tested on Linux. On Windows and macOS the prompts and skills work the same way.</p>
+
+  <div class="step"><div class="b">1</div><div>
+    <h3>Download the kit</h3>
+    <p>Through git or the "Code › Download ZIP" button on GitHub.</p>
+<pre><span class="k">git clone</span> <span class="s">https://github.com/inematds/ia-de-elite.git</span>
+<span class="k">cd</span> ia-de-elite</pre>
+  </div></div>
+
+  <div class="step"><div class="b">2</div><div>
+    <h3>Check that everything is in order</h3>
+    <p>The test runs offline and without any API key.</p>
+<pre><span class="k">bash</span> kit/testes/rodar.sh   <span class="c"># ends with "30 ok · 0 falha(s)"</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">3</div><div>
+    <h3>Use a prompt right now</h3>
+    <p>Open <code>kit/prompts/05-peca-falhas.md</code>, copy the block and paste it into your chat along with an idea of yours. Then try the other six.</p>
+<pre><span class="k">cat</span> kit/prompts/05-peca-falhas.md</pre>
+  </div></div>
+
+  <div class="step"><div class="b">4</div><div>
+    <h3>Install the skills in Claude Code (optional)</h3>
+    <p>Copies the 4 skills to <code>~/.claude/skills/</code>. It does not overwrite a skill with the same name without <code>--forcar</code>.</p>
+<pre><span class="k">bash</span> kit/instalar.sh --dry-run   <span class="c"># shows what will be copied</span>
+<span class="k">bash</span> kit/instalar.sh
+<span class="c"># in Claude Code: "poke holes in my idea: ..." · "interview me before ..." · "show, don't tell: ..."</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">5</div><div>
+    <h3>Turn a meeting into tasks</h3>
+    <p>Test first without audio, using the sample meeting. Then pass your own file (mp3, m4a, wav, mp4) or a ready-made transcript (.txt, .srt).</p>
+<pre><span class="k">python3</span> kit/scripts/reuniao.py --simular --saida teste-reuniao
+<span class="k">cat</span> teste-reuniao/tarefas.md
+
+<span class="k">pip install</span> faster-whisper                 <span class="c"># once; runs on your computer</span>
+<span class="k">python3</span> kit/scripts/reuniao.py reuniao.mp3   <span class="c"># uses claude -p or Ollama if you have them</span>
+<span class="k">python3</span> kit/scripts/reuniao.py reuniao.mp3 --motor prompt   <span class="c"># only generates the prompt to paste</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">6</div><div>
+    <h3>Dictate instead of typing</h3>
+    <p>Windows <code>Win + H</code>, macOS <code>Fn</code> twice. On Linux:</p>
+<pre><span class="k">bash</span> kit/scripts/ditado.sh --checar                    <span class="c"># what is installed</span>
+<span class="k">bash</span> kit/scripts/ditado.sh --vocab <span class="s">"INEMA, Claude Code"</span>  <span class="c"># speak, Enter, text copied</span></pre>
+  </div></div>
+</div></section>
+
+<section id="exemplos"><div class="wrap">
+  <span class="chip">Examples</span>
+  <h2>Real outputs from the kit</h2>
+  <p class="sub">Generated by the kit's own files, unedited.</p>
+  <div class="ex">
+    <figure><img src="../assets/ex-painel-en.jpg" alt="Dark panel with 40 and 170 words per minute highlighted and bars comparing typing and speaking" loading="lazy" width="1200" height="768"><figcaption>Habit 3: <code>exemplos/painel-falar-vs-digitar.html</code>, the format the <code>mostra-nao-conta</code> skill delivers — big numbers, labeled bars, and a flow.</figcaption></figure>
+    <figure><pre><span class="c"># python3 kit/scripts/reuniao.py kit/exemplos/reuniao-exemplo.txt --motor claude</span>
+<span class="k">| Owner       | What to do                            | Deadline  |</span>
+|-------------|---------------------------------------|-----------|
+| Paulo       | Review module three of the script     | Friday    |
+| Bia         | Build the sign-up page                | Wednesday |
+| Rafael      | Send the new photos to Bia            | tomorrow  |
+| Marina      | Write the welcome email               | no date   |
+
+<span class="c"># ata.md — open points</span>
+- The page depends on the photos Rafael is going to send.
+- The email has no deadline, but the launch is on 10/30.</pre><figcaption>Habit 2: the kit's sample meeting became <code>tarefas.md</code> and <code>ata.md</code> with <code>claude -p</code> ("quote from the conversation" column omitted here). Without AI, <code>--simular</code> makes a rules-based version.</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="roadmap"><div class="wrap">
+  <span class="chip">Next steps</span>
+  <h2>How to keep going</h2>
+  <p class="sub">One habit per week works better than all seven at once.</p>
+  <div class="phase"><div class="tag">Week 1</div><div class="d"><strong>Speak and ask for flaws</strong><span>Turn on dictation and use prompt 05 on every important idea.</span></div></div>
+  <div class="phase"><div class="tag">Week 2</div><div class="d"><strong>Meeting and interview</strong><span>Run <code>reuniao.py</code> on a real meeting and let the AI interview you before a project.</span></div></div>
+  <div class="phase"><div class="tag">Week 3</div><div class="d"><strong>Show and test</strong><span>Turn a report into a dashboard and replace every "can the AI do it?" doubt with a test.</span></div></div>
+  <div class="phase"><div class="tag">Always</div><div class="d"><strong>Open mind</strong><span>One new test per week with prompt 07. Keep what worked.</span></div></div>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="pill">Prompts in PT</div><div class="pill">Claude Code Skills</div><div class="pill">local faster-whisper</div><div class="pill">MIT · open and free</div>
+    <p style="margin-top:18px">Elite AI · open and free content ·
+      <a href="https://github.com/inematds/ia-de-elite">inematds/ia-de-elite</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var KEY='ia-de-elite-theme';
+    var b=document.body, t=document.getElementById('themeToggle');
+    try{ if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; } }catch(e){}
+    t.addEventListener('click',function(){
+      var light=b.classList.toggle('light');
+      t.textContent=light?'☀️':'🌙';
+      try{ localStorage.setItem(KEY, light?'light':'dark'); }catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>

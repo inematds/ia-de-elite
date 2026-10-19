@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Falar × digitar — exemplo mostra-nao-conta</title>
+<style>
+  :root{--bg:#0c0c10;--card:#16161e;--line:#272730;--txt:#e9e9ee;--mut:#9a9aa6;--amb:#FACC15}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 Inter,system-ui,sans-serif;padding:28px 16px}
+  main{max-width:880px;margin:0 auto}
+  h1{font-size:clamp(1.6rem,4vw,2.4rem);margin:0 0 .2em;letter-spacing:-.02em}
+  .mut{color:var(--mut)}
+  .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}
+  @media(max-width:600px){.nums{grid-template-columns:1fr}}
+  .n{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .n b{display:block;font-size:2.4rem;line-height:1;color:var(--amb)}
+  .n span{color:var(--mut);font-size:.95rem}
+  .bar{margin:16px 0}
+  .bar .r{display:flex;justify-content:space-between;font-size:.95rem;margin-bottom:6px}
+  .bar .t{height:26px;background:#1d1d26;border-radius:8px;overflow:hidden}
+  .bar .f{height:100%;width:0;border-radius:8px;transition:width 1s ease}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px}
+  .flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.4em .9em;font-size:.92rem}
+  .flow i{color:var(--amb);font-style:normal}
+  @media(prefers-reduced-motion:reduce){.bar .f{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <h1>Falar é cerca de 4× mais rápido que digitar</h1>
+  <p class="mut">Médias amplamente citadas; varia de pessoa para pessoa.</p>
+  <div class="nums">
+    <div class="n"><b>~40</b><span>palavras por minuto digitando (média 30–50)</span></div>
+    <div class="n"><b>~170</b><span>palavras por minuto falando (média 150–200)</span></div>
+    <div class="n"><b>4×</b><span>mais contexto para a IA no mesmo tempo</span></div>
+  </div>
+  <div class="bar"><div class="r"><span>Digitando</span><b>40 palavras/min</b></div><div class="t"><div class="f" data-w="23.5" style="background:#6b7280"></div></div></div>
+  <div class="bar"><div class="r"><span>Falando</span><b>170 palavras/min</b></div><div class="t"><div class="f" data-w="100" style="background:var(--amb)"></div></div></div>
+  <div class="flow"><span>Fale à vontade</span><i>→</i><span>IA organiza em tópicos</span><i>→</i><span>IA pergunta o que falta</span><i>→</i><span>Resposta sob medida</span></div>
+</main>
+<script>
+  requestAnimationFrame(function(){document.querySelectorAll('.f').forEach(function(e){e.style.width=e.dataset.w+'%'})});
+</script>
+</body>
+</html>
